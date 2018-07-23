@@ -12,7 +12,7 @@ ___
 2. [组件](./doc/com.md)
 3. [Module](./doc/mod.md)
 4. [service](./doc/ser.md)
-5 [组件通信](./doc/mes.md)
+5. [组件通信](./doc/mes.md)
 
 ### 核心部分
 ___
