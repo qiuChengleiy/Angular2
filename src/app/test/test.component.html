@@ -1,0 +1,48 @@
+<div>
+  <h1>测试用例：表单登录 </h1>
+  <input type="text" #usernames >
+
+  <button (click)="onClick(usernames.value)">Login</button>
+  <h1>双向数据绑定 {{username+password}}</h1>
+  <input type="text"
+  [(ngModel)]="username1"
+  />
+<input type="password"
+  [(ngModel)]="password2"
+  />
+<button (click)="onClick2()">Login</button>
+
+</div>
+<h1>表单验证</h1>
+<div>
+    <input required type="text"
+      [(ngModel)]="username3"
+      #usernameRef="ngModel"
+      />
+      {{usernameRef.valid}}
+    <input required type="password"
+      [(ngModel)]="password3"
+      #passwordRef="ngModel"
+      />
+      {{passwordRef.valid}}
+      {{usernameRef.errors | json}}
+    <button (click)="onClick3()">Login</button>
+  </div>
+<h1>字符不能少于三个</h1>
+<form #formRef="ngForm" (ngSubmit)="onSubmit(formRef.value)">
+ <fieldset ngModelGroup="login">
+  <input type="text"
+  name="username"
+  [(ngModel)]="username"
+  #usernameRef1="ngModel"
+  required 
+  minlength="3"
+  />
+  {{usernameRef1.errors | json}}
+  <button type="submit">Submit</button>
+  </fieldset>
+</form>
+  <h1>以下是验证对应的视图变化：</h1>
+
+  <div *ngIf="usernameRef1.errors?.required">这是必要的字段</div>
+  <div *ngIf="usernameRef1.errors?.minlength">应该至少三个字符</div>
